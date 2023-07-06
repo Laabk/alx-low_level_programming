@@ -23,4 +23,4 @@ return (actual_prime(n, n - 1));
  * Return: 1 if n is prime, 0 if not
  */
 int actual_prime(int n, int i)
-{
+}
