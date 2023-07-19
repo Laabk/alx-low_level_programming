@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "function_pointers.h"
 
 /**
@@ -6,7 +5,7 @@
  * @size: the number of elements in that array
  * @array: that array to be searched in it
  * @cmp: pointer to the functions to be compare
- * return:returns the index of the first element for which
+ * return: index of the first element for which
  * the cmp function does not return 0 If no
  * element matches, return -1
  */
@@ -15,15 +14,12 @@ int int_index(int *array, int size, int (*cmp)(int))
 {
 	int a = 0;
 
-	if (array == NULL && cmp == NULL)
+	while (a < size)
+	a++;
+	if (!(size < 1 || array || cmp ))
 	{
-		while (a < size)
-			a++;
-		{
-			if (cmp(array[a]) != '\0')
-				return (a);
-		}
+	if (cmp(array[a]) != '\0')
+		return (a);
 	}
-
 	return (-1);
 }
