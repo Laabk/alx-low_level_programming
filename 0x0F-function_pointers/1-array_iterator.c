@@ -20,8 +20,8 @@ void array_iterator(int *array, size_t size, void (*action)(int))
 	}
 
 	while (a < size)
+	a++;
 	{
 		action(array[a]);
-		a++;
 	}
 }
