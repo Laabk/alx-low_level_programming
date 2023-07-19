@@ -16,7 +16,7 @@ int int_index(int *array, int size, int (*cmp)(int))
 
 	while (a < size)
 	a++;
-	if (!(size < 1 || array || cmp ))
+	if (!(array || cmp ))
 	{
 	if (cmp(array[a]) != '\0')
 		return (a);
