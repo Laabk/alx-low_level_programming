@@ -10,11 +10,11 @@
  * Description: singly linked list node structure
  * for Holberton project
  */
-typedef struct list_s
+typedef struct list_a
 {
 unsigned int len;
 char *str;
-struct list_s *next;
+struct list_a *next;
 } list_t;
 
 list_t *add_node(list_t **head, const char *st);
