@@ -7,37 +7,39 @@ char *create_cont(char *file);
 void close_file(int fld);
 
 /**
- * create_cont - reserve 1024 bytes for cont.
- * @file: The name of the file
- * Return: pointer
+ * create_cont - the reserve 1024 bytes for cont.
+ * @file: name of the file
+ * Return: the pointer
  */
+
 char *create_cont(char *file)
 {
-	char *cont;
+	char *numb;
 
-	cont = malloc(sizeof(char) * 1024);
+	numb = malloc(sizeof(char) * 1024);
 
-	if (cont == NULL)
+	if (numb == NULL)
 	{
 	dprintf(STDERR_FILENO,
 	"Error: Can't write to %s\n", file);
 	exit(99);
 	}
 
-	return (cont);
+	return (numb);
 }
 
 /**
- * close_file - exits the file descriptors.
- * @filn: The file to close
+ * close_file - this func exits the file descriptors.
+ * @filn: file to be close
  */
+
 void close_file(int fld)
 {
-	int n;
+	int a;
 
-	n = close(fld);
+	a = close(fld);
 
-	if (n == -1)
+	if (a == -1)
 	{
 	dprintf(STDERR_FILENO, "Error: Can't close fld %d\n", fld);
 	exit(100);
@@ -45,16 +47,17 @@ void close_file(int fld)
 }
 
 /**
- * main - Copies files to another
- * @argc: The arguments involved in program.
- * @argv: pointers to the arguments involved
+ * main - this Copies files to another
+ * @argc: arguments involved in program.
+ * @argv: ther pointers to the arguments involved
  * Return: 0 success
  */
+
 int main(int argc, char *argv[])
 {
 	int a, z;
 	int n, i;
-	char *cont;
+	char *numb;
 
 	if (argc != 3)
 	{
@@ -62,34 +65,34 @@ int main(int argc, char *argv[])
 	exit(97);
 	}
 
-	cont = create_cont(argv[2]);
-	a = open(argv[1], O_RDONLY);
-	n = read(a, cont, 1024);
+	numb = create_cont(argv[2]);
+	n = open(argv[1], O_RDONLY);
+	a = read(a, cont, 1024);
 	z = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
-	if (a == -1 || n == -1)
+	if (n == -1 || a == -1)
 	{
 	dprintf(STDERR_FILENO,
 	"Error: Can't read from file %s\n", argv[1]);
-	free(cont);
+	free(numb);
 	exit(98);
 	}
 
-	i = write(z, cont, n);
+	i = write(z, numb, a);
 	if (z == -1 || i == -1)
 	{
 	dprintf(STDERR_FILENO,
 	"Error: Can't write to %s\n", argv[2]);
-	free(cont);
+	free(numb);
 	exit(99);
 	}
 
-	n = read(a, cont, 1024);
+	a = read(n, numb, 1024);
 	z = open(argv[2], O_WRONLY | O_APPEND);
-	} while (n > 0);
-	free(cont);
-	close_file(a);
+	} while (a > 0);
+	free(numb);
+	close_file(n);
 	close_file(z);
 	return (0);
 }
