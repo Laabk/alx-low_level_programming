@@ -9,7 +9,7 @@
 
 int sum_dlistint(dlistint_t *head)
 {
-	int tot;
+	int tot = 0;
 
 	if (head != NULL)
 	{
