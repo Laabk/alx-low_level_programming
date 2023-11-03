@@ -7,20 +7,20 @@
  */
 hash_table_t *hash_table_create(unsigned long int size)
 {
-	hash_table_t *creat
+	hash_table_t *creat;
 	hash_node_t **list;
 	unsigned long int d;
 
 	creat = malloc(sizeof(hash_table_t));
 	if (creat == NULL)
-		return (NULL);
+	return (NULL);
 
 	list = malloc(sizeof(hash_node_t *) * size);
 	if (list == NULL)
-		return (NULL);
+	return (NULL);
 
 	for (d = 0; d < size; d++)
-		list[d] = NULL;
+	list[d] = NULL;
 
 	creat->list = list;
 	creat->size = size;
