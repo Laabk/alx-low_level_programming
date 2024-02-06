@@ -1,0 +1,47 @@
+#ifndef _SEARCH_ALGOS_H_
+#define _SEARCH_ALGOS_H_
+
+#include <stdlib.h>
+#include <stdio.h>
+
+/**
+ * struct listint_s - A singly linked list
+ * @n: Integer the involved
+ * @index: index of node in the list
+ * @next: a pointer to the next node
+ * Description: a singly linked list node structur
+ */
+typedef struct listint_s
+{
+	int n;
+	size_t index;
+	struct listint_s *next;
+} listint_t;
+
+/**
+ * struct skiplist_s - A singly linked list with an express lane
+ * @n: Integer passed involved
+ * @index: the index of node in the list
+ * @next: the pointer to the next node
+ * @express: the ppointer to the next node
+ * Description: A singly linked list node structure for alx tasks
+ */
+typedef struct skiplist_s
+{
+	int n;
+	size_t index;
+	struct skiplist_s *next;
+	struct skiplist_s *express;
+} skiplist_t;
+
+int linear_search(int *array, size_t size, int value);
+int jump_search(int *array, size_t size, int value);
+int interpolation_search(int *array, size_t size, int value);
+int exponential_search(int *array, size_t size, int value);
+int advanced_binary(int *array, size_t size, int value);
+int binary_search(int *array, size_t size, int value);
+int binary_rec(int *array, size_t left, size_t right, int value);
+listint_t *jump_list(listint_t *list, size_t size, int value);
+skiplist_t *linear_skip(skiplist_t *list, int value);
+
+#endif
