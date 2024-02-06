@@ -93,7 +93,6 @@ int exponential_search(int *array, size_t size, int value)
 	all = binary_search_func(array + idx, (next + 1) - idx, value);
 
 	if (all >= 0)
-	all = all + idx;
-
+	all += idx;
 	return (all);
 }
