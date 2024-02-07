@@ -23,7 +23,7 @@ int search_recursively(int *array, size_t size, int value)
 	printf("\n");
 
 	if (h_seac && size % 2 == 0)
-		h_seac--;
+	h_seac--;
 
 	if (value == array[h_seac])
 	{
