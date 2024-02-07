@@ -15,7 +15,7 @@ int binary_seach_recur(int *array, size_t left, size_t right, int value)
 	size_t d;
 
 	if (right < left)
-		return (-1);
+	return (-1);
 	printf("Searching in array: ");
 
 	d = left;
