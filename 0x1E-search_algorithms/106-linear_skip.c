@@ -10,33 +10,31 @@
  * Return: If the value is not present or the head
  */
 
-skiplist_t *linear_skip(skiplist_t *list, int value)
+listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	skiplist_t *node, *jmp;
+	listint_t *node, *jump;
+	size_t step, step_size;
 
-	if (list == NULL)
+	if (list == NULL || size == 0)
 	return (NULL);
 
-	for (node = jmp = list; jmp->next != NULL && jmp->n < value;)
+	step = 0;
+	step_size = sqrt(size);
+	for (node = jump = list; jump->index + 1 < size && jump->n < value;)
 	{
-	node = jmp;
-	if (jmp->express != NULL)
+	node = jump;
+	for (step += step_size; jump->index < step; jump = jump->next)
 	{
-	jmp = jmp->express;
-	printf("Value checked at index [%ld] = [%d]\n",
-	ump->index, jmp->n);
+	if (jump->index + 1 == size)
+	break;
 	}
-	else
-	{
-	while (jmp->next != NULL)
-	jmp = jmp->next;
-	}
+	printf("Value checked at index [%ld] = [%d]\n", jump->index, jump->n);
 	}
 
 	printf("Value found between indexes [%ld] and [%ld]\n",
-	node->index, jmp->index);
+	node->index, jump->index);
 
-	for (; node->index < jmp->index && node->n < value; node = node->next)
+	for (; node->index < jump->index && node->n < value; node = node->next)
 	printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
 	printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
 
