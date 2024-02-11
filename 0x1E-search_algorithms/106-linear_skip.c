@@ -1,11 +1,11 @@
 #include "search_algos.h"
 
 /**
- * linear_skip - Searches for an algorithm in a sorted singly
+ * jump_list - Searches for an algorithm in a sorted singly
  *list
- * @list: pointer to the  head of the linked list to search.
+ * @size: pointer to the  head of the linked list to search.
  * @value: value to search for.
- *
+ * @list: value to search for.
  *
  * Return: If the value is not present or the head
  */
