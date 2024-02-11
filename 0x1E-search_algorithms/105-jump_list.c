@@ -2,49 +2,44 @@
 #include <math.h>
 
 /**
- * jump_list - this func searches for value in array of
- * integers using the Jump search algorithm involved
- * @list: list invloved
- * @size: the array size
- * @value: value to search
+ * jump_list - Searches for an algorithm in a sorted singly
+ * linked
+ * @list: pointer to the  head of the linked list to search.
+ * @size: number of nodes in the list.
+ * @value: value to search for.
  *
- * Return: the index of number
+ *
+ * Return: If the value is not present or the head
+ *
+ *
  */
-
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	size_t idx, q, bw;
-	listint_t *rev;
+	size_t step, step_size;
+	listint_t *node, *jump;
 
 	if (list == NULL || size == 0)
 		return (NULL);
 
-	bw = (size_t)sqrt((double)size);
-	idx = 0;
-	q = 0;
-
-	do {
-	prev = list;
-	q++;
-	idx = q * bw;
-
-	while (list->next && list->idx < idx)
-	list = list->next;
-
-	if (list->next == NULL && idx != list->idx)
-	idx = list->idx;
-
-	printf("Value checked at index [%d] = [%d]\n", (int)idx, list->n);
-
-	} while (idx < size && list->next && list->n < value);
-
-	printf("Value found between indexes ");
-	printf("[%d] and [%d]\n", (int)rev->idx, (int)list->idx);
-	for (; rev && rev->idx <= list->idx; rev = rev->next)
+	step = 0;
+	step_size = sqrt(size);
+	for (node = jump = list; jump->index + 1 < size && jump->n < value;)
 	{
-	printf("Value checked at index [%d] = [%d]\n", (int)rev->idx, rev->n);
-	if (rev->n == value)
-	return (rev);
+		node = jump;
+		for (step += step_size; jump->index < step; jump = jump->next)
+		{
+			if (jump->index + 1 == size)
+				break;
+		}
+		printf("Value checked at index [%ld] = [%d]\n", jump->index, jump->n);
 	}
-	return (NULL);
+
+	printf("Value found between indexes [%ld] and [%ld]\n",
+			node->index, jump->index);
+
+	for (; node->index < jump->index && node->n < value; node = node->next)
+		printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
+	printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
+
+	return (node->n == value ? node : NULL);
 }
