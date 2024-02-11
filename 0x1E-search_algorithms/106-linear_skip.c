@@ -1,34 +1,36 @@
 #include "search_algos.h"
 
 /**
- * jump_list - Searches for an algorithm in a sorted singly
+ * linear_skip - Searches for an algorithm in a sorted singly
  *list
- * @size: pointer to the  head of the linked list to search.
+ * @list: pointer to the  head of the linked list to search.
  * @value: value to search for.
- * @list: value to search for.
+ *
  *
  * Return: If the value is not present or the head
  */
 
-listint_t *jump_list(listint_t *list, size_t size, int value)
+skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-	listint_t *node, *jump;
-	size_t step, step_size;
+	skiplist_t *node, *jump;
 
-	if (list == NULL || size == 0)
+	if (list == NULL)
 	return (NULL);
 
-	step = 0;
-	step_size = sqrt(size);
-	for (node = jump = list; jump->index + 1 < size && jump->n < value;)
+	for (node = jump = list; jump->next != NULL && jump->n < value;)
 	{
 	node = jump;
-	for (step += step_size; jump->index < step; jump = jump->next)
+	if (jump->express != NULL)
 	{
-	if (jump->index + 1 == size)
-	break;
+	jump = jump->express;
+	printf("Value checked at index [%ld] = [%d]\n",
+	jump->index, jump->n);
 	}
-	printf("Value checked at index [%ld] = [%d]\n", jump->index, jump->n);
+	else
+	{
+	while (jump->next != NULL)
+	jump = jump->next;
+	}
 	}
 
 	printf("Value found between indexes [%ld] and [%ld]\n",
